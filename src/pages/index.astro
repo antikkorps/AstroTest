@@ -1,21 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = 'Home Page';
 ---
 
-<head>
-  <meta charset='utf-8' />
-  <meta name='viewport' content='width=device-width' />
-  <title>{pageTitle}</title>
-</head>
-<Layout title='Welcome to Astro.'>
-  <main>
-    <a href='/'>Home</a>
-    <a href='/about/'>About</a>
-    <a href='/blog/'>Blog</a>
-    <h1>Welcome to <span class='text-gradient'>{pageTitle}</span></h1>
-  </main>
-</Layout>
+<BaseLayout pageTitle={pageTitle}>
+  <h2>My awesome blog subtitle</h2>
+</BaseLayout>
 
 <style>
   main {
