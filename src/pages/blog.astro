@@ -5,6 +5,7 @@ const allPosts = await Astro.glob('./posts/*.md');
 const pageTitle = 'Blog';
 const res = await fetch('https://www.vod-news.com/wp-json/wp/v2/posts');
 const posts = await res.json();
+import '../styles/blog.css';
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -23,9 +24,13 @@ const posts = await res.json();
   {
     posts.map((post) => (
       <>
-        <h5 set:html={post.title.rendered} />
-        <p set:html={post.content.rendered} />
-        <p>{post.date}</p>
+        <div class='card mb-5'>
+          <img class='card-img-top' src={post.yoast_head_json.og_image.url} />
+          <div class='card-body'>
+            <h5 class='card-title' set:html={post.title.rendered} />
+            <p class='card-text' set:html={post.content.rendered} />
+          </div>
+        </div>
       </>
     ))
   }

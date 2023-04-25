@@ -1,0 +1,5 @@
+img.alignnone {
+  display: flex;
+  border-radius: 1em;
+  margin: 0 auto;
+}
