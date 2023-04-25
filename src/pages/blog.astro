@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 const allPosts = await Astro.glob('./posts/*.md');
 const pageTitle = 'Blog';
+const res = await fetch('https://www.vod-news.com/wp-json/wp/v2/posts');
+const posts = await res.json();
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -17,4 +19,14 @@ const pageTitle = 'Blog';
       ))
     }
   </ul>
+  <h2>Posts from WordPress</h2>
+  {
+    posts.map((post) => (
+      <>
+        <h5 set:html={post.title.rendered} />
+        <p set:html={post.content.rendered} />
+        <p>{post.date}</p>
+      </>
+    ))
+  }
 </BaseLayout>
