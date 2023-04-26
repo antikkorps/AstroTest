@@ -5,6 +5,10 @@ const allPosts = await Astro.glob('./posts/*.md');
 const pageTitle = 'Blog';
 const res = await fetch('https://www.vod-news.com/wp-json/wp/v2/posts');
 const posts = await res.json();
+const restStoryblok = await fetch(
+  'https://api.storyblok.com/v2/cdn/stories?token=EgAvBRDf9aBTUZI7ZbLbfQtt'
+);
+const storyblok = await restStoryblok.json();
 import '../styles/blog.css';
 ---
 
@@ -29,6 +33,20 @@ import '../styles/blog.css';
           <div class='card-body'>
             <h5 class='card-title' set:html={post.title.rendered} />
             <p class='card-text' set:html={post.content.rendered} />
+          </div>
+        </div>
+      </>
+    ))
+  }
+  <h2>Posts from Contentful</h2>
+  {
+    storyblok.stories.map((post) => (
+      <>
+        <div class='card mb-5'>
+          <img class='card-img-top' src={post.content.image} />
+          <div class='card-body'>
+            <h5 class='card-title' set:html={post.content.title} />
+            <p class='card-text' set:html={post.content.intro} />
           </div>
         </div>
       </>
