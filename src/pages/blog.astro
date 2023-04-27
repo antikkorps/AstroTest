@@ -6,7 +6,7 @@ const pageTitle = 'Blog';
 const res = await fetch('https://www.vod-news.com/wp-json/wp/v2/posts');
 const posts = await res.json();
 const restStoryblok = await fetch(
-  'https://api.storyblok.com/v2/cdn/stories?token=EgAvBRDf9aBTUZI7ZbLbfQtt'
+  `https://api.storyblok.com/v2/cdn/stories?token=EgAvBRDf9aBTUZI7ZbLbfQtt`
 );
 const storyblok = await restStoryblok.json();
 import '../styles/blog.css';
