@@ -2,6 +2,17 @@
 import ThemeIcon from './ThemeIcon.astro';
 ---
 
+<style>
+  .scroll-tracker {
+    display: block;
+    inset: 3.5rem 0 auto;
+    position: fixed;
+    height: 0.5rem;
+    background: purple;
+    z-index: 1;
+  }
+</style>
+
 <nav class='navbar navbar-expand-lg bg-body-tertiary fixed-top'>
   <div class='container-fluid'>
     <a class='navbar-brand' href='/'>Navbar</a>
@@ -57,3 +68,4 @@ import ThemeIcon from './ThemeIcon.astro';
     </div>
   </div>
 </nav>
+<div class='scroll-tracker'></div>

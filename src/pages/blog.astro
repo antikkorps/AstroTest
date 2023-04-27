@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
+
 const allPosts = await Astro.glob('./posts/*.md');
 const pageTitle = 'Blog';
 const res = await fetch('https://www.vod-news.com/wp-json/wp/v2/posts');
